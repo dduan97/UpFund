@@ -28,6 +28,11 @@ def payment_create():
     print(token, charge)
     return "yay!"
 
+# serving static files
+@app.route("/static/<path:filename>", methods=["GET"])
+def serve_static(filename):
+    return app.send_static_file(filename)
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, use_reloader=False)
