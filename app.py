@@ -20,7 +20,7 @@ def donation_page():
 def payment_create():
     token = request.form["stripeToken"]
     charge = stripe.Charge.create(
-        amount=1000,
+        amount=request.form["amount"],
         currency="usd",
         description="Example charge",
         source=token,
