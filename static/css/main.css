@@ -1573,6 +1573,10 @@
 		line-height: 1.75em;
 	}
 
+	input {
+		color: #fff;
+	}
+
 	a {
 		-moz-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-webkit-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -2154,9 +2158,9 @@
 	label {
 		color: #ffffff;
 		display: block;
-		font-size: 0.9em;
-		font-weight: 300;
-		margin: 0 0 1em 0;
+		font-size: 1.1em;
+		font-weight: 100;
+		margin: 1em 0 0.25em 0;
 	}
 
 	input[type="text"],
@@ -2188,7 +2192,13 @@
 
 	/*hacky fix to vertically center cc input*/
 	.field{
-		padding-top:0.5em;
+		padding-top:0.7em;
+	}
+
+	input::placeholder,
+	input::-webkit-input-placeholder,
+	input::-moz-placeholder{
+		color: rgba(255, 255, 255, 0.3);
 	}
 
 		input[type="text"]:invalid,
@@ -4015,3 +4025,18 @@
 					}
 
 	}
+
+.error, .success {
+	display: none;
+}
+
+.visible {
+	display: block;
+	font-size: 1.25em;
+	width: 100%;
+	text-align: center;
+}
+
+.error {
+	color: #e44c65;
+}

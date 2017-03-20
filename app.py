@@ -23,14 +23,17 @@ def donation_page():
 @app.route("/payment", methods=["POST"])
 def payment_create():
     token = request.form["stripeToken"]
-    charge = stripe.Charge.create(
-        amount=request.form["amount"],
-        currency="usd",
-        description="Example charge",
-        source=token,
-    )
+    try:
+        charge = stripe.Charge.create(
+            amount=request.form["amount"],
+            currency="usd",
+            description="Donation from " + request.form["name"],
+            source=token,
+        )
+    except:
+        return {"status": "failure"}
     print(token, charge)
-    return "yay!"
+    return {"status": "success"}
 
 # serving static files
 @app.route("/static/<path:filename>", methods=["GET"])

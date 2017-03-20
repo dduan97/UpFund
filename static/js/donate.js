@@ -13,7 +13,7 @@ var card = elements.create('card', {
       fontSize: '1.1em',
 
       '::placeholder': {
-        color: 'rgba(255, 255, 255, 0.75)',
+        color: 'rgba(255, 255, 255, 0.3)',
         fontFamily: "Roboto, Helvetica, sans-serif",
       },
     },
@@ -64,8 +64,9 @@ function setOutcome(result) {
   if (result.token) {
     // Use the token to create a charge or a customer
     // https://stripe.com/docs/charges
-    successElement.querySelector('.token').textContent = result.token.id;
+    // successElement.querySelector('.token').textContent = result.token.id;
     successElement.classList.add('visible');
+    // send a post request to our thing TODO
   } else if (result.error) {
     errorElement.textContent = result.error.message;
     errorElement.classList.add('visible');
