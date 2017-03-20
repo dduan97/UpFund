@@ -1,4 +1,4 @@
-* {
+.stripey {
   font-family: "Helvetica Neue", Helvetica;
   font-size: 19px;
   font-variant: normal;
@@ -10,7 +10,7 @@ html {
   height: 100%;
 }
 
-body {
+div.inner.stripey {
   background: #424770;
   display: flex;
   align-items: center;
@@ -18,12 +18,12 @@ body {
   min-height: 100%;
 }
 
-form {
+form.stripey {
   width: 480px;
   margin: 20px 0;
 }
 
-label {
+label.stripey {
   position: relative;
   color: #8798AB;
   display: block;
@@ -33,7 +33,7 @@ label {
   flex-direction: column-reverse;
 }
 
-label > span {
+label.stripey > span.stripey {
   position: absolute;
   top: 0;
   left: 0;
@@ -47,7 +47,7 @@ label > span {
   cursor: text;
 }
 
-label > span span {
+label.stripey > span.stripey span.stripey {
   position: absolute;
   top: 0;
   left: 0;
@@ -56,18 +56,18 @@ label > span span {
   cursor: text;
 }
 
-label .field.is-focused + span,
-label .field:not(.is-empty) + span {
+label.stripey .field.is-focused + span,
+label.stripey .field:not(.is-empty) + span {
   pointer-events: none;
 }
 
-label .field.is-focused + span span,
-label .field:not(.is-empty) + span span {
+label.stripey .field.is-focused + span span,
+label.stripey .field:not(.is-empty) + span span {
   transform: scale(0.68) translateY(-36px);
   cursor: default;
 }
 
-label .field.is-focused + span {
+label.stripey .field.is-focused + span {
   border-bottom-color: #34D08C;
 }
 
@@ -92,7 +92,7 @@ label .field.is-focused + span {
   opacity: 0;
 }
 
-button {
+button.stripey {
   float: left;
   display: block;
   background: #34D08C;
@@ -108,11 +108,11 @@ button {
   outline: none;
 }
 
-button:focus {
+button:focus.stripey {
   background: #24B47E;
 }
 
-button:active {
+button:active.stripey {
   background: #159570;
 }
 

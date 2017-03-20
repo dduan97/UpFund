@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="/static/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="/static/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="/static/css/ie8.css" /><![endif]-->
+		<script src="https://js.stripe.com/v3/"></script>
 	</head>
 	<body>
 
@@ -24,7 +25,8 @@
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#one">Who we are</a></li>
 							<li><a href="#two">What we do</a></li>
-							<li><a href="#three">Get in touch</a></li>
+							<li><a href="#three">Make a gift</a></li>
+							<li><a href="#four">Get in touch</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -128,8 +130,38 @@
 						</div>
 					</section>
 
-				<!-- Three -->
 					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+							<form>
+								<label>
+									<input name="cardholder-name" class="field is-empty" placeholder="Jane Doe" />
+									<span><span>Name</span></span>
+								</label>
+								<label>
+									<input class="field is-empty" type="email" placeholder="me@example.com" />
+									<span><span>Email</span></span>
+								</label>
+								<label>
+									<div id="card-element" class="field is-empty"></div>
+									<span><span>Card</span></span>
+								</label>
+								<label>
+									<input id="numberInput" name="amount" class="field is-empty" type="number" min="0.01" max="2147483647" step="0.01"></div>
+									<span><span>Amount</span></span>
+								</label>
+								<button id="donationSubmit" type="submit">Donate</button>
+								<div class="outcome">
+									<div class="error"></div>
+									<div class="success">
+										Success! Your Stripe token is <span class="token"></span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+
+				<!-- Four -->
+					<section id="four" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get in touch</h2>
 							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -187,6 +219,8 @@
 
 			</div>
 
+
+
 		<!-- Footer -->
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
@@ -204,6 +238,94 @@
 			<script src="/static/js/util.js"></script>
 			<!--[if lte IE 8]><script src="/static/js/ie/respond.min.js"></script><![endif]-->
 			<script src="/static/js/main.js"></script>
+			<script>
+				var stripe = Stripe('pk_test_DtDKIGRnnGyTHQG8gNZzaKO4');
+				var elements = stripe.elements();
+
+				var card = elements.create('card', {
+				iconStyle: 'solid',
+				style: {
+					base: {
+					iconColor: '#8898AA',
+					color: 'white',
+					lineHeight: '36px',
+					fontWeight: 300,
+					fontFamily: 'Helvetica Neue',
+					fontSize: '19px',
+
+					'::placeholder': {
+						color: '#8898AA',
+						fontFamily: 'Helvetica Neue',
+					},
+					},
+					invalid: {
+					iconColor: '#e85746',
+					color: '#e85746',
+					}
+				},
+				classes: {
+					focus: 'is-focused',
+					empty: 'is-empty',
+				},
+				});
+				card.mount('#card-element');
+
+				var inputs = Array.from(document.querySelectorAll('input.field'));
+				inputs.forEach(function(input) {
+				input.addEventListener('focus', function() {
+					input.classList.add('is-focused');
+				});
+				input.addEventListener('blur', function() {
+					input.classList.remove('is-focused');
+				});
+				input.addEventListener('keyup', function() {
+					if (input.value.length === 0) {
+					input.classList.add('is-empty');
+					} else {
+					input.classList.remove('is-empty');
+					}
+				});
+				});
+
+				var numberInput = document.getElementById("numberInput");
+				numberInput.addEventListener('mousewheel', function(e){e.preventDefault();});
+				// // event listener to update button
+				// numberInput.addEventListener('blur', function(e){
+				//   // get the value in the amount field
+				//   var amount = numberInput.value;
+				//   document.getElementById("donationSubmit").innerHTML = "Donate $" + amount;
+				// })
+
+				function setOutcome(result) {
+				var successElement = document.querySelector('.success');
+				var errorElement = document.querySelector('.error');
+				successElement.classList.remove('visible');
+				errorElement.classList.remove('visible');
+
+				if (result.token) {
+					// Use the token to create a charge or a customer
+					// https://stripe.com/docs/charges
+					successElement.querySelector('.token').textContent = result.token.id;
+					successElement.classList.add('visible');
+				} else if (result.error) {
+					errorElement.textContent = result.error.message;
+					errorElement.classList.add('visible');
+				}
+				}
+
+				card.on('change', function(event) {
+				setOutcome(event);
+				});
+
+				document.querySelector('form').addEventListener('submit', function(e) {
+				e.preventDefault();
+				var form = document.querySelector('form');
+				var extraDetails = {
+					name: form.querySelector('input[name=cardholder-name]').value,
+				};
+				stripe.createToken(card, extraDetails).then(setOutcome);
+				});
+				</script>
 
 	</body>
 </html>
