@@ -15,11 +15,6 @@ def donation_page():
     print("donating something")
     return render_template("stripe.html")
 
-# GET route for index
-@app.route("/", methods=["GET"])
-def index():
-    return render_template("index.html")
-
 # POST route for new payment
 @app.route("/payment", methods=["POST"])
 def payment_create():
