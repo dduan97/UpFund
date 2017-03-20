@@ -9,6 +9,10 @@ stripe.api_key = os.environ["UF_STRIPE_TEST_SECRET"]
 if not stripe.api_key:
     print("no secret key in environment variable")
 
+@app.route("/", methods=["GET"])
+def root():
+    return render_template("index.html");
+
 # GET route for paying
 @app.route("/donate", methods=["GET"])
 def donation_page():
