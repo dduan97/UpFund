@@ -5,15 +5,15 @@ var card = elements.create('card', {
   iconStyle: 'solid',
   style: {
     base: {
-      color: 'rgba(255, 255, 255, 0.75)',
-      iconColor: 'rgba(255, 255, 255, 0.75)',
+      color: 'rgba(0, 0, 0, 0.9)',
+      iconColor: 'rgba(0, 0, 0, 0.9)',
       lineHeight: '1.75em',
-      fontWeight: 100,
+      fontWeight: 300,
       fontFamily: "Roboto, Helvetica, sans-serif",
       fontSize: '1.1em',
 
       '::placeholder': {
-        color: 'rgba(255, 255, 255, 0.3)',
+        color: 'rgba(0, 0, 0, 0.5)',
         fontFamily: "Roboto, Helvetica, sans-serif",
       },
     },
