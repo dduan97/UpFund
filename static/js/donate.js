@@ -78,17 +78,22 @@ function setOutcome(result) {
     formJSON = JSON.stringify(formJSON);
     console.log(formJSON);
     $.ajax({
-        url: "/payment",
-        method: "POST",
-        data: JSON.stringify(formJSON),
-        success: function(res){
-          if (res["status"] == "success") {
-            alert("success!");
-          } else {
-            alert("failure!");
-          }
-        },
-        contentType: "application/json"});
+      url: "/payment",
+      method: "POST",
+      data: JSON.stringify(formJSON),
+      success: function(res){
+        if (res["status"] == "success") {
+          $("#donationSubmit").html("<span style='font-size: 1.5em'>Success!<span>");
+          window.location = "/";
+        } else {
+          $("#donationSubmit").html("<span style='font-size: 1.5em'>Donate<span>");
+          errorElement.textContent = res["message"];
+          errorElement.classList.add("visible");
+        }
+      },
+      contentType: "application/json"});
+    // while waiting for the response
+    $("#donationSubmit").html("<span style='font-size: 1.5em'>Processing...<span>");
   } else if (result.error) {
     errorElement.textContent = result.error.message;
     errorElement.classList.add('visible');

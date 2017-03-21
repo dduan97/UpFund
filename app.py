@@ -32,7 +32,7 @@ def payment_create():
     print("about to make charge with token ", token);
     try:
         charge = stripe.Charge.create(
-            amount=100*int(form_data["amount"]),
+            amount=int(100*float(form_data["amount"])),
             currency="usd",
             description="Donation",
             source=token,
@@ -47,7 +47,7 @@ def payment_create():
         print("Type is: %s" % err['type'])
         print("Code is: %s" % err['code'])
         # param is '' in this case
-        print("Param is: %s" % err['param'])
+        # print("Param is: %s" % err['param'])
         print("Message is: %s" % err['message'])
         return jsonify({"status": "failure", "message": err["message"]})
     except stripe.error.RateLimitError as e:
@@ -76,6 +76,7 @@ def payment_create():
     except Exception as e:
     # Something else happened, completely unrelated to Stripe
         print("unknown non-stripe error")
+        print(e)
         return jsonify({"status": "failure", "message": "We seem to be having issues. Please try again later"})
     return jsonify({"status": "success"})
 
