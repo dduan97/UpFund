@@ -31,25 +31,27 @@
 						</header>
 
 							<div class="row">
-									<div class="6u 12u$(medium)">
-										<div class="error">Oops! Something went wrong.</div>
-										<div class="success">Success!</div>
-										<form>
-											<label> Name </label>
-											<input name="cardholder-name" type="text" class="field is-empty" placeholder="Jane Doe" />
-											<label> Email </label>
-											<input class="field is-empty" type="email" placeholder="me@example.com" />
-											<label> Card </label>
-											<div id="card-element" class="field is-empty"></div>
-											<label> Amount </label>
-											<input id="numberInput" name="amount" class="field is-empty" type="number" min="0.01" max="2147483647" step="0.01">
-											<div style="opacity: 0.0">Submit</div>
-											<button id="donationSubmit" type="submit" class="button special fit"><span style="font-size: 1.5em">Donate<span></button>
-										</form>
-									</div>
-									<div class="6u 12u(xsmall)">
+								<div class="6u 12u$(medium)">
+									<div class="error">Oops! Something went wrong.</div>
+									<div class="success">Success!</div>
+									<form id="stripe-form">
+										<label> Cardholder Name </label>
+										<input name="cardholder-name" type="text" class="field is-empty" placeholder="Jane Doe" />
+										<label> Email </label>
+										<input name="email" class="field is-empty" type="email" placeholder="me@example.com" />
+										<label> Card </label>
+										<div id="card-element" class="field is-empty"></div>
+										<label> Amount </label>
+										<input id="numberInput" name="amount" placeholder="100.00" class="field is-empty" type="number" min="1.00" max="2147483647" step="0.01">
+										<div style="opacity: 0.0">Submit</div>
+										<button id="donationSubmit" type="submit" class="button special fit"><span style="font-size: 1.5em">Donate<span></button>
+									</form>
+								</div>
+								<div class="6u 12u(xsmall)">
 
-									</div>
+								</div>
+							</div>
+									
 
 						<!-- Text -->
 							<section>

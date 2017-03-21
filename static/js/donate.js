@@ -55,18 +55,40 @@ numberInput.addEventListener('mousewheel', function(e){e.preventDefault();});
 //   document.getElementById("donationSubmit").innerHTML = "Donate $" + amount;
 // })
 
+function objectifyForm(formArray) {//serialize data function
+
+  var returnArray = {};
+  for (var i = 0; i < formArray.length; i++){
+    returnArray[formArray[i]['name']] = formArray[i]['value'];
+  }
+  return returnArray;
+}
+
 function setOutcome(result) {
-  var successElement = document.querySelector('.success');
   var errorElement = document.querySelector('.error');
-  successElement.classList.remove('visible');
   errorElement.classList.remove('visible');
 
   if (result.token) {
     // Use the token to create a charge or a customer
     // https://stripe.com/docs/charges
     // successElement.querySelector('.token').textContent = result.token.id;
-    successElement.classList.add('visible');
     // send a post request to our thing TODO
+    formJSON = objectifyForm($("#stripe-form").serializeArray());
+    formJSON["stripeToken"] = result.token;
+    formJSON = JSON.stringify(formJSON);
+    console.log(formJSON);
+    $.ajax({
+        url: "/payment",
+        method: "POST",
+        data: JSON.stringify(formJSON),
+        success: function(res){
+          if (res["status"] == "success") {
+            alert("success!");
+          } else {
+            alert("failure!");
+          }
+        },
+        contentType: "application/json"});
   } else if (result.error) {
     errorElement.textContent = result.error.message;
     errorElement.classList.add('visible');
