@@ -50,13 +50,13 @@ Now we're livin' on love</p>
 								<div class="error">Oops! Something went wrong.</div>
 								<form id="stripe-form">
 									<label> Cardholder Name </label>
-									<input name="cardholder-name" type="text" class="field is-empty" placeholder="Jane Doe" />
+									<input name="cardholder-name" type="text" class="field is-empty" placeholder="Jane Doe" required="required" />
 									<label> Email </label>
-									<input name="email" class="field is-empty" type="email" placeholder="me@example.com" />
+									<input name="email" class="field is-empty" type="email" placeholder="me@example.com" required="required"/>
 									<label> Card </label>
 									<div id="card-element" class="field is-empty"></div>
 									<label> Amount </label>
-									<input id="numberInput" name="amount" placeholder="100.00" class="field is-empty" type="number" min="1.00" max="2147483647" step="0.01">
+									<input id="numberInput" name="amount" placeholder="100.00" class="field is-empty" type="number" min="1.00" max="2147483647" step="0.01" required="required">
 									<div style="opacity: 0.0">Submit</div>
 									<button id="donationSubmit" type="submit" class="button special fit"><span style="font-size: 1.5em">Donate<span></button>
 								</form>
