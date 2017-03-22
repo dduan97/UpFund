@@ -84,7 +84,7 @@ function setOutcome(result) {
       success: function(res){
         if (res["status"] == "success") {
           $("#donationSubmit").html("<span style='font-size: 1.5em'>Success!<span>");
-          window.location = "/";
+          window.location = "/thanks";
         } else {
           $("#donationSubmit").html("<span style='font-size: 1.5em'>Donate<span>");
           errorElement.textContent = res["message"];

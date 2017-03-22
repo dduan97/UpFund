@@ -20,6 +20,10 @@ def donation_page():
     print("donating something")
     return render_template("stripe.html")
 
+@app.route("/thanks", methods=["GET"])
+def thank_you_page():
+    return render_template("thanks.html")
+
 @app.route("/elements", methods=["GET"])
 def elements_page():
     return render_template("elements.html")
