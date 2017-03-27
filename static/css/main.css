@@ -1,5 +1,5 @@
 @import url("font-awesome.min.css");
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,100italic,300italic");
 
 /*
 	Landed by HTML5 UP
@@ -3386,10 +3386,10 @@
 		}
 
 		#banner:after {
-			background-image: -moz-linear-gradient(top, rgba(240,245,242, 0.7), rgba(240,245,242, 0.7)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
-			background-image: -webkit-linear-gradient(top, rgba(240,245,242, 0.7), rgba(240,245,242, 0.7)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
-			background-image: -ms-linear-gradient(top, rgba(240,245,242, 0.7), rgba(240,245,242, 0.7)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
-			background-image: linear-gradient(top, rgba(240,245,242, 0.7), rgba(240,245,242, 0.7)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
+			background-image: -moz-linear-gradient(top, rgba(240,245,242, 0.65), rgba(240,245,242, 0.65)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
+			background-image: -webkit-linear-gradient(top, rgba(240,245,242, 0.65), rgba(240,245,242, 0.65)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
+			background-image: -ms-linear-gradient(top, rgba(240,245,242, 0.65), rgba(240,245,242, 0.65)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
+			background-image: linear-gradient(top, rgba(240,245,242, 0.65), rgba(240,245,242, 0.65)), url("https://c1.staticflickr.com/8/7301/10819744936_d7b6f0b97e_b.jpg");;
 			content: '';
 			display: block;
 			height: 100%;
@@ -3406,7 +3406,7 @@
 			max-width: 95%;
 			padding: 6em;
 			position: relative;
-			text-align: right;
+			text-align: center;
 			vertical-align: middle;
 			z-index: 1;
 		}
@@ -3419,11 +3419,15 @@
 				#banner .content header h2 {
 					font-size: 2.5em;
 					margin: 0;
+					font-weight: 400;
+					color: rgba(0,0,0,0.8);
 				}
 
 				#banner .content header p {
 					margin: 0.5em 0 0 0;
 					top: 0;
+					font-weight: 400;
+					color: rgba(0,0,0,0.8);
 				}
 
 			#banner .content .image {
