@@ -40,7 +40,8 @@ def payment_create():
             currency="usd",
             description="Donation",
             source=token,
-            statement_descriptor="UPFUND"
+            statement_descriptor="UPFUND",
+            receipt_email=form_data["email"]
         )
     except stripe.error.CardError as e:
         # Since it's a decline, stripe.error.CardError will be caught
