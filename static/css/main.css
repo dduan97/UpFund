@@ -4062,3 +4062,11 @@
 #logo, span.title{
 	font-family: "Libre Baskerville", sans-serif;
 }
+
+.footnote{
+	padding-left: 50%;
+	text-align: right;
+	font-size: 0.9em;
+	font-style: italic;
+	line-height: 1.1em;
+}

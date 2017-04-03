@@ -28,6 +28,10 @@ def thank_you_page():
 def elements_page():
     return render_template("elements.html")
 
+@app.route("/about", methods=["GET"])
+def about_page():
+    return render_template("about.html")
+
 # POST route for new payment
 @app.route("/payment", methods=["POST"])
 def payment_create():
