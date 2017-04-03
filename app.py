@@ -38,6 +38,11 @@ def payment_create():
     form_data = json.loads(request.get_json(force=True))
     token = form_data["stripeToken"]["id"]
     print("about to make charge with token ", token);
+
+    # make sure the amount is positive
+    if int(100*float(form_data["amount"])) <= 1:
+        return jsonify({"status": "failure", "message": "amount must be at least 1"})
+
     try:
         charge = stripe.Charge.create(
             amount=int(100*float(form_data["amount"])),
@@ -67,7 +72,7 @@ def payment_create():
     # Invalid parameters were supplied to Stripe's API
         print("stripe invalid request")
         print(e)
-        return jsonify({"status": "failure", "message": "We seem to be having issues. Please try again later"})
+        return jsonify({"status": "failure", "message": e.json_body["error"]["message"]})
     except stripe.error.AuthenticationError as e:
     # Authentication with Stripe's API failed
     # (maybe you changed API keys recently)

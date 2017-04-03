@@ -89,7 +89,14 @@ function setOutcome(result) {
           $("#donationSubmit").html("<span style='font-size: 1.5em'>Donate<span>");
           errorElement.textContent = res["message"];
           errorElement.classList.add("visible");
+          document.getElementById('error').scrollIntoView();
         }
+      },
+      failure: function(){
+        $("#donationSubmit").html("<span style='font-size: 1.5em'>Donate<span>");
+        errorElement.textContent = "Whoops! Something went wrong (error code 13)";
+        errorElement.classList.add("visible");
+        document.getElementById('error').scrollIntoView();
       },
       contentType: "application/json"});
     // while waiting for the response
@@ -97,7 +104,8 @@ function setOutcome(result) {
   } else if (result.error) {
     errorElement.textContent = result.error.message;
     errorElement.classList.add('visible');
-  }
+    document.getElementById('error').scrollIntoView();
+  } 
 }
 
 card.on('change', function(event) {
