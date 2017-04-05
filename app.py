@@ -5,7 +5,11 @@ from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__, static_url_path="")
 
-stripe.api_key = os.environ["UF_STRIPE_TEST_SECRET"]
+stripe.api_key = ""
+if os.environ["ENV"] == "TEST":
+    stripe.api_key = os.environ["UF_STRIPE_TEST_SECRET"]
+elif os.environ["ENV"] == "PROD":
+    stripe.api_key = os.environ["UF_STRIPE_PROD_SECRET"]
 
 if not stripe.api_key:
     print("no secret key in environment variable")
