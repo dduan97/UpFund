@@ -2474,7 +2474,27 @@
 				.icon.major.alt:before {
 					color: #DDDADF !important;
 					text-shadow: 1px 0 0 #000000, -1px 0 0 #000000, 0 1px 0 #000000, 0 -1px 0 #000000;
+					-moz-transition: color 0.2s ease-in-out, color 0.2s ease-in-out;
+					-webkit-transition: color 0.2s ease-in-out, color 0.2s ease-in-out;
+					-ms-transition: color 0.2s ease-in-out, color 0.2s ease-in-out;
+					transition: color 0.2s ease-in-out, color 0.2s ease-in-out;
 				}
+
+			.icon.major.icon-link{
+				cursor:pointer;
+				-moz-transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+				-webkit-transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+				-ms-transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+				transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+			}
+
+			.icon.major.icon-link:hover{
+				background: #AAA8AC;
+			}
+
+			.icon.major.icon-link:hover:before{
+				color: #AAA8AC !important;
+			}
 
 /* Image */
 
